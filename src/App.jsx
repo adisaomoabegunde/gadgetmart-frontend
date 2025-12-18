@@ -70,11 +70,12 @@ const router = createBrowserRouter(
             <Route path='/user/categories' element={<CategoriesPage/>}/>      
             <Route path='/user/categories/:id' element={<CategoryDetailPage/>} />
             <Route path='/user/account' element={<OrdersPage/>}/>
+            <Route path='success'  element={ <CheckoutSuccess />  } />
+
             
         <Route element={ <RequireAuth />} >
             <Route index element={<HomePage />} />
 
-            <Route path='success'  element={ <CheckoutSuccess />  } />
             <Route path='cart' element={<CartPage/>} />
 
         </Route>
