@@ -167,8 +167,8 @@ function CartPage(){
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         items: checkoutItems,
-        successUrl: "https://gadgetmart-frontend-pgnwwxgfd-adedapos-projects-a093f77e.vercel.app/user/success",
-        cancelUrl: "https://gadgetmart-frontend-pgnwwxgfd-adedapos-projects-a093f77e.vercel.app/user/cancel"
+        successUrl: "https://gadgetmart-frontend-qhah0spbm-adedapos-projects-a093f77e.vercel.app/user/success",
+        cancelUrl: "https://gadgetmart-frontend-qhah0spbm-adedapos-projects-a093f77e.vercel.app/user/cancel"
       })
     });
 
