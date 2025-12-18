@@ -8,7 +8,7 @@ import './App.css';
 import ProtectedRoutes from './ProtectedRoutes';
 import Register from './components/Register';
 import Admin from './components/Admin';
-import Login from './components/Login.Jsx';
+import Login from './components/Login';
 import Home from './components/Home';
 import Products from './components/products';
 import New from './components/productss/new';
