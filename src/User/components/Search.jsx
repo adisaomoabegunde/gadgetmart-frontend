@@ -125,7 +125,7 @@ export default function Search(){
                 <ProductGridd>
                         {results.map(g => (
                             <ProductWrapperrr>
-                                <WhiteBoxxx to={`product/ProductDetail/`+g.gadgetId} > 
+                                <WhiteBoxxx to={`/user/products/product/ProductDetail/${g.gadgetId}`} > 
                                     <div> 
                                     <img src={g.imageUrls[0]} alt={g.brand} />
 
@@ -136,7 +136,7 @@ export default function Search(){
                                     
                                     </WhiteBoxxx>
                                     <ProductInfoBoxxx>
-                                        <Titleee to={`product/ProductDetail/`+g.gadgetId} > {g.brand} </Titleee>
+                                        <Titleee to={`/user/products/product/ProductDetail/${g.gadgetId}`} > {g.brand} </Titleee>
                                         <PriceRowww>
                                             <Priceee>
                                             &#x20A6;{g.price}

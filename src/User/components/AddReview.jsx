@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddReview({ gadgetId, onNewReview }) {
   const [rating, setRating] = useState(0);
@@ -6,6 +7,7 @@ export default function AddReview({ gadgetId, onNewReview }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,12 +17,18 @@ export default function AddReview({ gadgetId, onNewReview }) {
     // If you store a JWT token:
     const token = localStorage.getItem("token");
 
+    if(!token){
+      alert("Please login again to add a review.");
+      navigate("/user/login");
+      return;
+    }
+
     try {
       const res = await fetch(`https://gadgetmart.runasp.net/api/gadgetmart/insertreview/${gadgetId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(token ? { Authorization: `Bearer ${token}` } : {})
+          "Authorization": `Bearer ${token}`
         },
         credentials: "include", // if you rely on cookies for auth
         body: JSON.stringify({ rating, title, body })
@@ -39,7 +47,7 @@ export default function AddReview({ gadgetId, onNewReview }) {
       alert("Review submitted!");
     } catch (err) {
       console.error("Submit review error:", err);
-      alert("Could not submit review: " + (err.message || "try again"));
+      alert("Could not submit review: try again");
     } finally {
       setLoading(false);
     }

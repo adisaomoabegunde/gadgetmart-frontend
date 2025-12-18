@@ -255,7 +255,7 @@ export default function CategoriesPage() {
                       </WhiteBoxxxx>
 
                       <ProductInfoBoxxxx>
-                        <Titleeee to={`/user/products/product/ProductDetail/${g.gadgetId ?? g.id ?? ""}`}>
+                        <Titleeee to={`/user/products/product/ProductDetail/${g.gadgetId}`}>
                           {g.brand ?? g.name ?? "Unnamed gadget"}
                         </Titleeee>
                         <PriceRowwww>
