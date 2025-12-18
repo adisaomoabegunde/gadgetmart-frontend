@@ -71,5 +71,6 @@ export default defineConfig({
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
         }
-    }
+    },
+    base: process.env.VITE_BASE_PATH || "/gadgetmart-frontend"
 })
