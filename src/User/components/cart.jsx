@@ -11,7 +11,7 @@ import Input from "./Input";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-
+const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL;
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const ColumnsWrapper = styled.div`
@@ -162,13 +162,14 @@ function CartPage(){
     );
     // console.log("Checkout Items:", checkoutItems);
 
+
     const response = await fetch("https://gadgetmart.runasp.net/api/Payment/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         items: checkoutItems,
-        successUrl: "https://gadgetmart-frontend-qhah0spbm-adedapos-projects-a093f77e.vercel.app/user/success",
-        cancelUrl: "https://gadgetmart-frontend-qhah0spbm-adedapos-projects-a093f77e.vercel.app/user/cancel"
+        successUrl: `${FRONTEND_URL}/user/success`,
+        cancelUrl: `${FRONTEND_URL}/user/cancel`
       })
     });
 
