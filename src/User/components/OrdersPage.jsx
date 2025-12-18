@@ -136,6 +136,8 @@ export default function OrdersPage() {
 
     try {
       const res = await fetch(url, {
+        method: "GET",
+        credentials: "include",
         headers: {
           "Accept": "application/json",
          
