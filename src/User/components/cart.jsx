@@ -1,7 +1,7 @@
 
 import Header from "./Header";
 import { CartContext } from "./CartContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Center from "./Center";
 import Button from "./Button";
@@ -67,6 +67,8 @@ function CartPage(){
   const [postalCode, setPostalCode] = useState('');
   const [streetAddress, setStreetAddress] = useState('');
   const [country, setCountry] = useState('');
+
+
 
   useEffect(()=>{
     if(!cartProducts || cartProducts.length === 0){

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { getAllGadgets } from "../../components/Gadgets";
 import styled from "styled-components";
 import Center from "./Center";
@@ -73,6 +73,7 @@ const Header = styled.h2`
 
 function NewProducts(){
      const [gadgets, setGadgets] = useState([]);
+     const cartRef = useRef(null);
 
      const {setLoading} = useLoading();
 
@@ -94,7 +95,31 @@ function NewProducts(){
 
     }
 
-    
+    const animateToCart = (img) => {
+    const clone = img.cloneNode(true);
+    const rect = img.getBoundingClientRect();
+    const cartRect = cartRef.current.getBoundingClientRect();
+
+    clone.style.position = "fixed";
+    clone.style.left = rect.left + "px";
+    clone.style.top = rect.top + "px";
+    clone.style.width = rect.width + "px";
+    clone.style.zIndex = 1000;
+    clone.style.transition = "all 0.7s ease-in-out";
+
+    document.body.appendChild(clone);
+
+    requestAnimationFrame(() => {
+        clone.style.left = cartRect.left + "px";
+        clone.style.top = cartRect.top + "px";
+        clone.style.width = "20px";
+        clone.style.opacity = "0";
+    });
+
+    setTimeout(() => clone.remove(), 700);
+    };
+
+
     return(
       <Center>
       <Header>New Arrivals</Header>
@@ -120,7 +145,10 @@ function NewProducts(){
                                       &#x20A6;{g.price}
                                    </Price>
                                     
-                                     <Button onClick={() => addToCart(g.gadgetId)} primary outline > Add to cart </Button>
+                                     <Button ref={cartRef} onClick={(e) => {
+                                        animateToCart(e.currentTarget.closest(".product-card").querySelector("img"));
+                                        addToCart(g.gadgetId)
+                                     } } primary outline > Add to cart </Button>
                                     
                                  </PriceRow>
                                 
