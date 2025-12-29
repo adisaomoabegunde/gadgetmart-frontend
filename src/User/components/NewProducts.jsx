@@ -125,7 +125,7 @@ function NewProducts(){
                                       &#x20A6;{g.price}
                                    </Price>
                                     
-                                     <Button ref={cartRef} onClick={() =>  addToCart(g.gadgetId)} primary outline > Add to cart </Button>
+                                     <Button  onClick={() =>  addToCart(g.gadgetId)} primary outline > Add to cart </Button>
                                     
                                  </PriceRow>
                                 
