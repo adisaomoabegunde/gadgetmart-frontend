@@ -7,6 +7,7 @@ import Button from "./Button";
 import { getCategoryById } from "../../components/Gadgets";
 import Center from "./Center";
 import { CartContext } from "./CartContext";
+import toast from "react-hot-toast";
 
 const Page = styled.div`
   padding: 40px 20px;

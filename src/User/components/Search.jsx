@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { CartContext } from "./CartContext";
-
+import toast from "react-hot-toast";
 
 
 
@@ -103,7 +103,7 @@ export default function Search(){
              const {setCartProducts} = useContext(CartContext);
                 function addToCart(product){
                     setCartProducts(prev => [...prev, product])
-            
+                     toast.success("Added to cart"); 
                 }
                
     return(

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import { CartContext } from "./CartContext";
 import { useLoading } from "../LoadingContext";
+import toast from "react-hot-toast";
 
 const H1 = styled.h1`
   font-size: 1.5em;

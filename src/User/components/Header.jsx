@@ -11,6 +11,7 @@ import { AuthContext, useAuth } from "../AuthContext";
 
     const StlyedHeader = styled.header`
         background-color: #222;
+        z-index: 3;
         
     `;
     const Logo = styled(Link)`
@@ -48,9 +49,11 @@ import { AuthContext, useAuth } from "../AuthContext";
         right:0;
         padding: 70px 20px 20px;
         background-color: #222;
+        z-index: 3;
         @media screen and (min-width: 768px){
             display: flex;
             position: static;
+        z-index: 3;
             padding:0;
         }
     `;

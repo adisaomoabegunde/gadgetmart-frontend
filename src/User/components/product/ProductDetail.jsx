@@ -9,6 +9,7 @@ import CartIcon from "../icons/CartIcon";
 import { CartContext } from "../CartContext";
 import AddReview from "../AddReview";
 import ReviewsList from "../ReviewsList";
+import toast from "react-hot-toast";
 
 
 const H1 = styled.h1`
