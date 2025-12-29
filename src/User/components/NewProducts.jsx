@@ -7,6 +7,7 @@ import CartIcon from "./icons/CartIcon";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
 import { useLoading } from "../LoadingContext";
+import toast from "react-hot-toast";
 
 const ProductWrapper = styled.div`
 
@@ -73,7 +74,7 @@ const Header = styled.h2`
 
 function NewProducts(){
      const [gadgets, setGadgets] = useState([]);
-     const cartRef = useRef(null);
+
 
      const {setLoading} = useLoading();
 
@@ -92,32 +93,11 @@ function NewProducts(){
     const {setCartProducts} = useContext(CartContext);
     function addToCart(product){
         setCartProducts(prev => [...prev, product])
+        toast.success("Added to cart");
 
     }
 
-    const animateToCart = (img) => {
-    const clone = img.cloneNode(true);
-    const rect = img.getBoundingClientRect();
-    const cartRect = cartRef.current.getBoundingClientRect();
-
-    clone.style.position = "fixed";
-    clone.style.left = rect.left + "px";
-    clone.style.top = rect.top + "px";
-    clone.style.width = rect.width + "px";
-    clone.style.zIndex = 1000;
-    clone.style.transition = "all 0.7s ease-in-out";
-
-    document.body.appendChild(clone);
-
-    requestAnimationFrame(() => {
-        clone.style.left = cartRect.left + "px";
-        clone.style.top = cartRect.top + "px";
-        clone.style.width = "20px";
-        clone.style.opacity = "0";
-    });
-
-    setTimeout(() => clone.remove(), 700);
-    };
+    
 
 
     return(
@@ -145,10 +125,7 @@ function NewProducts(){
                                       &#x20A6;{g.price}
                                    </Price>
                                     
-                                     <Button ref={cartRef} onClick={(e) => {
-                                        animateToCart(e.currentTarget.closest(".product-card").querySelector("img"));
-                                        addToCart(g.gadgetId)
-                                     } } primary outline > Add to cart </Button>
+                                     <Button ref={cartRef} onClick={() =>  addToCart(g.gadgetId)} primary outline > Add to cart </Button>
                                     
                                  </PriceRow>
                                 
