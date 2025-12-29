@@ -87,6 +87,7 @@ function UserProducts(){
          const {setCartProducts} = useContext(CartContext);
             function addToCart(product){
                 setCartProducts(prev => [...prev, product])
+                 toast.success("Added to cart"); 
         
             }
            

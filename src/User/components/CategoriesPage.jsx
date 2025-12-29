@@ -202,7 +202,7 @@ export default function CategoriesPage() {
          const {setCartProducts} = useContext(CartContext);
             function addToCart(product){
                 setCartProducts(prev => [...prev, product])
-        
+                 toast.success("Added to cart");
             }
 
   function firstImageUrl(gadget) {
